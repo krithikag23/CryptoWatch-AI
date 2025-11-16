@@ -5,10 +5,20 @@ import streamlit as st
 
 API_BASE = "https://api.coingecko.com/api/v3"
 
+@st.cache_data(ttl=60)
+def fetch_current_price(coin):
+    try:
+        url = f"{API_BASE}/simple/price"
+        params = {"ids": coin, "vs_currencies": "usd"}
+        response = requests.get(url).json()
+        return response[coin]["usd"]
+    except:
+        return None
+
+
 @st.cache_data(ttl=300)
 def fetch_historical_prices(coin):
     try:
-        # Unix timestamps for past 7 days
         now = int(time.time())
         seven_days_ago = now - (7 * 24 * 60 * 60)
 
