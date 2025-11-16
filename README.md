@@ -1,4 +1,4 @@
-# CryptoWatch-AI 🚀
+# CryptoWatch-AI 
 
 A real-time cryptocurrency price dashboard with historical trends & forecasting.
 
